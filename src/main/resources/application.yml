@@ -5,7 +5,7 @@ server:
 spring:
   ## Datasource Properties
   datasource:
-    url: jdbc:mysql://localhost:3306/paymentdb
+    url: jdbc:mysql://192.168.64.3:3306/paymentdb
     username: paymentuser
     password: paymentpassword
     ## Hibernate Properties
@@ -27,3 +27,8 @@ eureka:
       defaultZone: http://localhost:8761/eureka
     instance:
       preferIpAddress: true
+
+# Kafka Config
+kafka:
+  bootstrap:
+    server: localhost:9094

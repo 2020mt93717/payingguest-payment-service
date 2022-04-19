@@ -76,7 +76,7 @@ public class PaymentRestController {
         // Validate if Guest Exist
         // We shouldnt generate payment entry for non existant guests
         // Use service discovery to get the response
-        String mGuestUrl = "http://guest-service/guest/id/" + pPayment.getGuestId();
+        String mGuestUrl = "http://guest-service/guest/" + pPayment.getGuestId();
         Guest myGuestResponse = mRestTemplate.getForObject(mGuestUrl, Guest.class);
         if (myGuestResponse == null || myGuestResponse.getGuestId() != pPayment.getGuestId()) {
             return new ResponseEntity<>(pPayment, HttpStatus.BAD_REQUEST);

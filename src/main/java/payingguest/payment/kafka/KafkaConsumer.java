@@ -1,7 +1,7 @@
 /***************************************************************************************
  * MIT License
  *
- * Copyright (c) 2022 Mrinmoybits
+ * Copyright (c) 2022 2020mt93717
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,20 +21,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  * **************************************************************************************/
-package payingguest.payment.config;
+package payingguest.payment.kafka;
 
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.kafka.annotation.EnableKafka;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.stereotype.Component;
 
-@Configuration
-@EnableKafka
-public class PaymentConfig {
-    @Bean
-    @LoadBalanced
-    public RestTemplate restTemplate() {
-        return new RestTemplate();
+@Component
+public class KafkaConsumer {
+
+    @KafkaListener(topics = "NewTopic", groupId = "group_id")
+    public void consume(String message) {
+        // Print statement
+        System.out.println("message = " + message);
     }
 }
