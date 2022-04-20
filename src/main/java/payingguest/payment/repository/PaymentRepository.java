@@ -32,6 +32,6 @@ public interface PaymentRepository extends CrudRepository<Payment, Long> {
 
     Iterable<Payment> findByGuestId(Long guestId);
 
-    void deleteByGuestId(Long paymentId);
+    void deleteByGuestId(Long guestId);
 
 }
