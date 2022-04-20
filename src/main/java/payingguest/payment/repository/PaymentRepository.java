@@ -30,6 +30,8 @@ import payingguest.payment.domain.Payment;
 
 public interface PaymentRepository extends CrudRepository<Payment, Long> {
 
-    Iterable<Payment> findByGuestId(Long paymentId);
+    Iterable<Payment> findByGuestId(Long guestId);
+
+    void deleteByGuestId(Long paymentId);
 
 }

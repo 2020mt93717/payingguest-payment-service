@@ -37,4 +37,6 @@ public interface PaymentService {
     Optional<Payment> findPaymentByPaymentId(Long pPaymentId);
 
     Iterable<Payment> findPaymentByGuestId(long pGuestId);
+
+    void deletePaymentForGuest(long pGuestId);
 }

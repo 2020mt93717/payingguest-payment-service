@@ -31,4 +31,4 @@ eureka:
 # Kafka Config
 kafka:
   bootstrap:
-    server: localhost:9094
+    server: 192.168.1.5:9092

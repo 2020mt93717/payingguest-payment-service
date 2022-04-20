@@ -23,15 +23,21 @@
  * **************************************************************************************/
 package payingguest.payment.kafka;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
+
+import payingguest.payment.service.PaymentService;
 
 @Component
 public class KafkaConsumer {
 
-    @KafkaListener(topics = "NewTopic", groupId = "group_id")
-    public void consume(String message) {
-        // Print statement
-        System.out.println("message = " + message);
+    @Autowired
+    private PaymentService mPaymentService;
+
+    @KafkaListener(topics = "DELETE_GUEST_TOPIC", groupId = "payment-service")
+    public void consumeDeleteGuestMessage(String pMessage) {
+        long myGuestId = Long.valueOf(pMessage);
+        mPaymentService.deletePaymentForGuest(myGuestId);
     }
 }

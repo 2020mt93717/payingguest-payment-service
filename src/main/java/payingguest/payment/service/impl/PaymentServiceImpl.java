@@ -61,4 +61,10 @@ public class PaymentServiceImpl implements PaymentService {
     public Iterable<Payment> findPaymentByGuestId(long pGuestId) {
         return mPaymentRepository.findByGuestId(pGuestId);
     }
+
+    @Override
+    @Transactional
+    public void deletePaymentForGuest(long pGuestId) {
+        mPaymentRepository.deleteByGuestId(pGuestId);
+    }
 }
